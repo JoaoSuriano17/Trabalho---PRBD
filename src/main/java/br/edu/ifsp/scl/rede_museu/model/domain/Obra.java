@@ -114,5 +114,13 @@ public class Obra{
         this.artista = artista;
     }
 
+    public Exposicao getExposicao() {
+        return exposicao;
+    }
+
+    public void setExposicao(Exposicao exposicao) {
+        this.exposicao = exposicao;
+    }
+
 
 }

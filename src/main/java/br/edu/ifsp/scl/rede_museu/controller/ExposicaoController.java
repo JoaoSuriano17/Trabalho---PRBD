@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +38,27 @@ public class ExposicaoController {
         return p;
     }
 
+    @PostMapping("/inserir/")
+    public Exposicao inserirExposicao(@RequestBody Exposicao exposicao){
+        return dao.save(exposicao);
+    }
+    /*
+    @PutMapping("/alterar/{id}")
+    public Exposicao alterarExposicao(@PathVariable("id") Long id, @RequestBody Exposicao exposicao){
+        Exposicao e=dao.findById(id).get();
+        e.setTitulo(exposicao.getTitulo());
+        e.setCurador(exposicao.getCurador());
+        e.setDescricao(exposicao.getDescricao());
+        e.setData_inicio(exposicao.getData_inicio());
+        e.setData_termino(exposicao.getData_termino());
+        e.setMuseu(exposicao.getMuseu());
+        return dao.save(e);
+    }
+    */
+    @PutMapping("/alterar/")
+    public Exposicao alterarExposicao(@RequestBody Exposicao exposicao){
+        return dao.save(exposicao);
+    }
     /*
     @DeleteMapping("/remover/{id}")
     public boolean removerPaciente(@PathVariable("id") Long id){

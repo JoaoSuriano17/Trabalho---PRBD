@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS exposicao(
 CREATE TABLE IF NOT EXISTS obra(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(255) NOT NULL,
-    ano DATE NOT NULL,
+    ano INT NOT NULL,
     movimento VARCHAR(120) NOT NULL,
     designacao VARCHAR(80) NOT NULL,
     altura DOUBLE NOT NULL,
@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS obra(
     CONSTRAINT exposicao_FK_obra FOREIGN KEY (id_exposicao) REFERENCES exposicao(id),
     CONSTRAINT designacoes_CK CHECK (designacao IN ('Pintura', 'Escultura', 'Audiovisual', 'Ambiente', 'Gravura'))
 );
-
 
 CREATE TABLE IF NOT EXISTS premio(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -91,3 +90,24 @@ INSERT INTO artista(nome, data_nasc, data_obito, qtde_premios, pais_origem) VALU
 INSERT INTO artista(nome, data_nasc, data_obito, qtde_premios, pais_origem) VALUES ('Moisés3', '2020-07-02', '2020-12-12', 190, 'Alemanha');
 INSERT INTO artista(nome, data_nasc, data_obito, qtde_premios, pais_origem) VALUES ('Moisés4', '2020-07-02', '2020-12-12', 190, 'Alemanha');
 INSERT INTO artista(nome, data_nasc, data_obito, qtde_premios, pais_origem) VALUES ('Moisés5', '2020-07-02', '2020-12-12', 190, 'Alemanha');
+
+INSERT INTO museu(nome, logradouro, numero, cep, descricao) VALUES ('MASP', 'Avenida Paulista', 123, '12345678', 'Projetado ano X. Fundado ano Y.');
+INSERT INTO museu(nome, logradouro, numero, cep, descricao) VALUES ('anti-MASP', 'anti-Avenida Paulista', 321, '87654321', 'Projetado ano Y. Fundado ano Z.');
+
+INSERT INTO exposicao(titulo, descricao, data_inicio, data_termino, id_curador, id_museu) VALUES ('A arte de X', 'Obras marcadas por X.', '2026-03-04', '2026-04-03', 1, 1);
+INSERT INTO exposicao(titulo, descricao, data_inicio, data_termino, id_curador, id_museu) VALUES ('A arte de Y', 'Obras marcadas por Y.', '2026-03-04', '2026-04-03', 1, 2);
+INSERT INTO exposicao(titulo, descricao, data_inicio, data_termino, id_curador, id_museu) VALUES ('A arte de Z', 'Obras marcadas por Z.', '2026-03-04', '2026-04-03', 2, 1);
+
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Cenário I', 2020, 'Neo-impressionismo', 'Pintura', 89.2, 240.7, 1, 1);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Cenário I', 2020, 'Neo-impressionismo', 'Audiovisual', 89.2, 240.7, 3, 1);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Cenário II', 2020, 'Realismo', 'Gravura', 89.2, 40.7, 1, 2);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Cenário III', 2020, 'Barroco', 'Pintura', 89.2, 120.7, 2, 2);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, profundidade, id_artista) VALUES ('Forma I', 2020, 'Classicismo', 'Escultura', 89.2, 240.7, 90, 3);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, profundidade, id_exposicao, id_artista) VALUES ('Forma II', 2020, 'Classicismo', 'Escultura', 89.2, 240.7, 90, 2, 3);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, profundidade, id_artista) VALUES ('Forma III', 2020, 'Classicismo', 'Escultura', 89.2, 240.7, 90, 3);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Figura I', 2020, 'Simbolismo', 'Pintura', 89.2, 60, 3, 4);
+INSERT INTO obra(titulo, ano, movimento, designacao, altura, comprimento, id_exposicao, id_artista) VALUES ('Figura II', 2020, 'Simbolismo', 'Pintura', 89.2, 60, 2, 4);
+
+INSERT INTO premio(titulo, ano, honorifico, id_exposicao) VALUES ('Prêmio A', 2026, 'Exposição mais P', 2);
+INSERT INTO premio(titulo, ano, honorifico, id_exposicao) VALUES ('Prêmio A', 2026, 'Exposição com melhor curadoria', 2);
+INSERT INTO premio(titulo, ano, honorifico, id_exposicao) VALUES ('Prêmio B', 2026, 'Exposição mais S', 3);

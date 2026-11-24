@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +37,26 @@ public class MuseuController {
         return p;
     }
 
+    @PostMapping("/inserir/")
+    public Museu inserirMuseu(@RequestBody Museu museu){
+        return dao.save(museu);
+    }
+    /*
+    @PutMapping("/alterar/{id}")
+    public Museu alterarMuseu(@PathVariable("id") Long id, @RequestBody Museu museu){
+        Museu m=dao.findById(id).get();
+        m.setNome(museu.getNome());
+        m.setLogradouro(museu.getLogradouro());
+        m.setNumero(museu.getNumero());
+        m.setCep(museu.getCep());
+        m.setDescricao(museu.getDescricao());
+        return dao.save(m);
+    }
+    */
+    @PutMapping("/alterar/")
+    public Museu alterarMuseu(@RequestBody Museu museu){
+        return dao.save(museu);
+    }
     /*
     @DeleteMapping("/remover/{id}")
     public boolean removerPaciente(@PathVariable("id") Long id){

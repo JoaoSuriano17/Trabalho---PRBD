@@ -56,6 +56,27 @@ public class Artista{
         return pais_origem;
     }
 
-    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setData_nascimento(LocalDate data_nascimento) {
+        this.data_nascimento = data_nascimento;
+    }
+
+    public void setData_obito(LocalDate data_obito) {
+        this.data_obito = data_obito;
+    }
+
+    public void setQtde_premios(int qtde_premios) {
+        this.qtde_premios = qtde_premios;
+    }
+
+    public void setPais_origem(String pais_origem) {
+        this.pais_origem = pais_origem;
+    }
 }

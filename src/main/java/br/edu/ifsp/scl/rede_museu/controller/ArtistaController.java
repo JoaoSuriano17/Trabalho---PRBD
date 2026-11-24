@@ -3,7 +3,6 @@ package br.edu.ifsp.scl.rede_museu.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +36,26 @@ public class ArtistaController {
         return p;
     }
 
+    @PostMapping("/inserir/")
+    public Artista inserirArtista(@RequestBody Artista artista){
+        return dao.save(artista);
+    }
+    /*
+    @PutMapping("/alterar/{id}")
+    public Artista alterarArtista(@PathVariable("id") Long id, @RequestBody Artista artista){
+        Artista a=dao.findById(id).get();
+        a.setNome(artista.getNome());
+        a.setData_nascimento(artista.getData_nascimento());
+        a.setData_obito(artista.getData_obito());
+        a.setPais_origem(artista.getPais_origem());
+        a.setQtde_premios(artista.getQtde_premios());
+        return dao.save(a);
+    }
+    */
+    @PutMapping("/alterar/")
+    public Artista alterarArtista(@RequestBody Artista artista){
+        return dao.save(artista);
+    }
     /*
     @DeleteMapping("/remover/{id}")
     public boolean removerPaciente(@PathVariable("id") Long id){
