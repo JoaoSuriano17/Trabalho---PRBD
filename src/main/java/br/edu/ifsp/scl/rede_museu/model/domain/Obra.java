@@ -32,14 +32,14 @@ public class Obra{
     @Column(nullable=false)
     private double comprimento;
     
-    private double profundidade;//Nullable, pois não se mede a profundidade de pinturas, por exemplo.
+    private Double profundidade;//Nullable, pois não se mede a profundidade de pinturas, por exemplo.
 
     @ManyToOne
     @JoinColumn(name="id_artista")
     private Artista artista;
 
     @ManyToOne
-    @JoinColumn(name = "id_departamento")
+    @JoinColumn(name = "id_exposicao")
     private Exposicao exposicao;
 
     public Long getId() {
@@ -102,7 +102,7 @@ public class Obra{
         return profundidade;
     }
 
-    public void setProfundidade(double profundidade) {
+    public void setProfundidade(Double profundidade) {
         this.profundidade = profundidade;
     }
 

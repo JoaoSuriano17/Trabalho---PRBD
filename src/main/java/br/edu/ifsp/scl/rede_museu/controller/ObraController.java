@@ -3,6 +3,7 @@ package br.edu.ifsp.scl.rede_museu.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,24 +63,9 @@ public class ObraController {
     public Obra alterarObra(@RequestBody Obra obra){
         return dao.save(obra);
     }
-    /*
-    @DeleteMapping("/remover/{id}")
-    public boolean removerPaciente(@PathVariable("id") Long id){
-        
+    @DeleteMapping("/deletar/{id}")
+    public String deletarObra(@PathVariable("id") Long id){
         dao.deleteById(id);
-
-        return true;
+        return "Obra deletada com sucesso!";
     }
-
-    @PostMapping("/inserir")
-    public Paciente inserirPaciente(
-             @RequestBody Paciente paciente){
-        return dao.save(paciente);
-    }
-
-    @PutMapping("/alterar")
-    public Paciente alterarPaciente(
-            @RequestBody Paciente paciente){
-        return dao.save(paciente);
-    }*/
 }
